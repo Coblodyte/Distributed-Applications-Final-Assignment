@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maintenance-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maintenance-api
+  template:
+    metadata:
+      labels:
+        app: maintenance-api
+    spec:
+      containers:
+        - name: maintenance-api
+          image: maintenance-api:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
