@@ -1,7 +1,7 @@
 ﻿using G2Reservations.WebAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Json;
 
 namespace G2Reservations.WebAPI.Controllers
 {
@@ -10,10 +10,12 @@ namespace G2Reservations.WebAPI.Controllers
 	public class G2ReservationsController : ControllerBase
 	{
 		private readonly G2ReservationDbContext _context;
+		private readonly IHttpClientFactory _httpClientFactory;
 
-		public G2ReservationsController(G2ReservationDbContext context)
+		public G2ReservationsController(G2ReservationDbContext context, IHttpClientFactory httpClientFactory)
 		{
 			_context = context;
+			_httpClientFactory = httpClientFactory;
 		}
 
 		[HttpGet]
@@ -80,8 +82,69 @@ namespace G2Reservations.WebAPI.Controllers
 			return Ok(reservations);
 		}
 
+		[HttpGet("customer/{customerId}/history")]
+		public async Task<ActionResult<IEnumerable<G2ReservationHistoryDto>>> GetReservationHistoryByCustomer(int customerId)
+		{
+			var customerClient = _httpClientFactory.CreateClient("CustomersApi");
+			var vehicleClient = _httpClientFactory.CreateClient("VehicleInventoryApi");
+
+			var customerResponse = await customerClient.GetAsync($"api/CustomersApi/{customerId}");
+			if (!customerResponse.IsSuccessStatusCode)
+			{
+				return NotFound(new
+				{
+					error = "NotFound",
+					message = "Customer not found."
+				});
+			}
+
+			var customer = await customerResponse.Content.ReadFromJsonAsync<G2CustomerLookupDto>();
+			if (customer == null)
+			{
+				return NotFound(new
+				{
+					error = "NotFound",
+					message = "Customer not found."
+				});
+			}
+
+			var reservations = await _context.Reservations
+				.Where(r => r.CustomerId == customerId)
+				.OrderByDescending(r => r.CreatedDate)
+				.ToListAsync();
+
+			var result = new List<G2ReservationHistoryDto>();
+
+			foreach (var reservation in reservations)
+			{
+				var vehicleResponse = await vehicleClient.GetAsync($"api/GSVehicles/{reservation.VehicleId}");
+				G2VehicleLookupDto? vehicle = null;
+
+				if (vehicleResponse.IsSuccessStatusCode)
+				{
+					vehicle = await vehicleResponse.Content.ReadFromJsonAsync<G2VehicleLookupDto>();
+				}
+
+				result.Add(new G2ReservationHistoryDto
+				{
+					Id = reservation.Id,
+					CustomerId = reservation.CustomerId,
+					CustomerName = $"{customer.FirstName} {customer.LastName}".Trim(),
+					VehicleId = reservation.VehicleId,
+					VehicleCode = vehicle?.VehicleCode ?? "Unknown",
+					VehicleType = vehicle?.VehicleType ?? "Unknown",
+					VehicleStatus = vehicle?.VehicleStatus ?? "Unknown",
+					CreatedDate = reservation.CreatedDate,
+					StartDate = reservation.StartDate,
+					EndDate = reservation.EndDate
+				});
+			}
+
+			return Ok(result);
+		}
+
 		[HttpPost]
-		public async Task<ActionResult<G2ReservationDto>> PostReservation(G2CreateReservationDto dto)
+		public async Task<ActionResult<G2ReservationDto>> PostReservation([FromBody] G2CreateReservationDto dto)
 		{
 			if (dto.CustomerId <= 0)
 			{
@@ -110,6 +173,71 @@ namespace G2Reservations.WebAPI.Controllers
 				});
 			}
 
+			var customerClient = _httpClientFactory.CreateClient("CustomersApi");
+			var vehicleClient = _httpClientFactory.CreateClient("VehicleInventoryApi");
+
+			var customerResponse = await customerClient.GetAsync($"api/CustomersApi/{dto.CustomerId}");
+			if (!customerResponse.IsSuccessStatusCode)
+			{
+				return NotFound(new
+				{
+					error = "NotFound",
+					message = "Customer not found."
+				});
+			}
+
+			var vehicleResponse = await vehicleClient.GetAsync($"api/GSVehicles/{dto.VehicleId}");
+			if (!vehicleResponse.IsSuccessStatusCode)
+			{
+				return NotFound(new
+				{
+					error = "NotFound",
+					message = "Vehicle not found."
+				});
+			}
+
+			var vehicle = await vehicleResponse.Content.ReadFromJsonAsync<G2VehicleLookupDto>();
+			if (vehicle == null)
+			{
+				return NotFound(new
+				{
+					error = "NotFound",
+					message = "Vehicle not found."
+				});
+			}
+
+			if (string.Equals(vehicle.VehicleStatus, "Reserved", StringComparison.OrdinalIgnoreCase))
+			{
+				return BadRequest(new
+				{
+					error = "InvalidReservation",
+					message = "Vehicle is already reserved."
+				});
+			}
+
+			if (string.Equals(vehicle.VehicleStatus, "Maintenance", StringComparison.OrdinalIgnoreCase))
+			{
+				return BadRequest(new
+				{
+					error = "InvalidReservation",
+					message = "Vehicle is currently being serviced."
+				});
+			}
+
+			var overlappingReservation = await _context.Reservations.AnyAsync(r =>
+				r.VehicleId == dto.VehicleId &&
+				dto.StartDate < r.EndDate &&
+				dto.EndDate > r.StartDate);
+
+			if (overlappingReservation)
+			{
+				return BadRequest(new
+				{
+					error = "InvalidReservation",
+					message = "Vehicle is already reserved for the selected dates."
+				});
+			}
+
 			var reservation = new G2Reservation
 			{
 				CustomerId = dto.CustomerId,
@@ -121,6 +249,26 @@ namespace G2Reservations.WebAPI.Controllers
 
 			_context.Reservations.Add(reservation);
 			await _context.SaveChangesAsync();
+
+			var updateStatusResponse = await vehicleClient.PutAsJsonAsync(
+				$"api/GSVehicles/{dto.VehicleId}/status",
+				"Reserved");
+
+			if (!updateStatusResponse.IsSuccessStatusCode)
+			{
+				_context.Reservations.Remove(reservation);
+				await _context.SaveChangesAsync();
+
+				var updateError = await updateStatusResponse.Content.ReadAsStringAsync();
+
+				return StatusCode(500, new
+				{
+					error = "VehicleStatusUpdateFailed",
+					message = string.IsNullOrWhiteSpace(updateError)
+						? "Reservation could not be completed because the vehicle status update failed."
+						: updateError
+				});
+			}
 
 			var result = new G2ReservationDto
 			{

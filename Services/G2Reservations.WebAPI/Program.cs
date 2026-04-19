@@ -4,23 +4,30 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<G2ReservationDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddHttpClient("CustomersApi", client =>
+{
+	client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CustomersApi"]!);
+	client.DefaultRequestHeaders.Add("X-From-Gateway", "GS-Gateway-Trusted-Token-111");
+});
+
+builder.Services.AddHttpClient("VehicleInventoryApi", client =>
+{
+	client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:VehicleInventoryApi"]!);
+	client.DefaultRequestHeaders.Add("X-From-Gateway", "GS-Gateway-Trusted-Token-111");
+});
+
 var app = builder.Build();
 
 app.UseMiddleware<GSGlobalExceptionMiddleware>();
 app.UseMiddleware<GSGatewayMiddleware>();
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
@@ -36,7 +43,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
