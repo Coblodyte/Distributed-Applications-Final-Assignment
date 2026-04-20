@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36930.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalPlatform", "Applications\CarRentalPlatform\CarRentalPlatform.csproj", "{B7D34B19-B463-8A2D-B813-52C1E9932226}"
 EndProject
@@ -45,10 +45,16 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8s", "K8s", "{7DFB4865-F2DE-4DBC-A426-029435536F5E}"
 	ProjectSection(SolutionItems) = preProject
+		k8s\customers-deployment.yaml = k8s\customers-deployment.yaml
+		k8s\customers-service.yaml = k8s\customers-service.yaml
 		k8s\gateway-deployment.yaml = k8s\gateway-deployment.yaml
 		k8s\gateway-service.yaml = k8s\gateway-service.yaml
 		k8s\maintenance-deployment.yaml = k8s\maintenance-deployment.yaml
 		k8s\maintenance-service.yaml = k8s\maintenance-service.yaml
+		k8s\reservations-deployment.yaml = k8s\reservations-deployment.yaml
+		k8s\reservations-service.yaml = k8s\reservations-service.yaml
+		k8s\vehicleinventory-deployment.yaml = k8s\vehicleinventory-deployment.yaml
+		k8s\vehicleinventory-service.yaml = k8s\vehicleinventory-service.yaml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G2Reservations.WebAPI", "Services\G2Reservations.WebAPI\G2Reservations.WebAPI.csproj", "{94EFEEE2-7B42-4F22-8618-9FF7B897485D}"
