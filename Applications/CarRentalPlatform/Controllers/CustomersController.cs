@@ -24,8 +24,8 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> Index()
 		{
 			var client = GetClient();
-			var customers = await client.GetFromJsonAsync<List<Customer>>("api/CustomersApi");
-			return View(customers ?? new List<Customer>());
+			var customers = await client.GetFromJsonAsync<List<G2Customer>>("api/G2CustomersApi");
+			return View(customers ?? new List<G2Customer>());
 		}
 
 		// GET: Customers/Details/5
@@ -34,7 +34,7 @@ namespace CarRentalPlatform.Controllers
 			if (id == null) return NotFound();
 
 			var client = GetClient();
-			var customer = await client.GetFromJsonAsync<Customer>($"api/CustomersApi/{id}");
+			var customer = await client.GetFromJsonAsync<G2Customer>($"api/G2CustomersApi/{id}");
 
 			if (customer == null) return NotFound();
 
@@ -50,17 +50,17 @@ namespace CarRentalPlatform.Controllers
 		// POST: Customers/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Email")] Customer customer)
+		public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Email")] G2Customer g2Customer)
 		{
 			if (ModelState.IsValid)
 			{
 				var client = GetClient();
-				var response = await client.PostAsJsonAsync("api/CustomersApi", customer);
+				var response = await client.PostAsJsonAsync("api/G2CustomersApi", g2Customer);
 
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction(nameof(Index));
 			}
-			return View(customer);
+			return View(g2Customer);
 		}
 
 		// GET: Customers/Edit/5
@@ -69,7 +69,7 @@ namespace CarRentalPlatform.Controllers
 			if (id == null) return NotFound();
 
 			var client = GetClient();
-			var customer = await client.GetFromJsonAsync<Customer>($"api/CustomersApi/{id}");
+			var customer = await client.GetFromJsonAsync<G2Customer>($"api/G2CustomersApi/{id}");
 
 			if (customer == null) return NotFound();
 
@@ -79,19 +79,19 @@ namespace CarRentalPlatform.Controllers
 		// POST: Customers/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Email")] Customer customer)
+		public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Email")] G2Customer g2Customer)
 		{
-			if (id != customer.Id) return NotFound();
+			if (id != g2Customer.Id) return NotFound();
 
 			if (ModelState.IsValid)
 			{
 				var client = GetClient();
-				var response = await client.PutAsJsonAsync($"api/CustomersApi/{id}", customer);
+				var response = await client.PutAsJsonAsync($"api/G2CustomersApi/{id}", g2Customer);
 
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction(nameof(Index));
 			}
-			return View(customer);
+			return View(g2Customer);
 		}
 
 		// GET: Customers/Delete/5
@@ -100,7 +100,7 @@ namespace CarRentalPlatform.Controllers
 			if (id == null) return NotFound();
 
 			var client = GetClient();
-			var customer = await client.GetFromJsonAsync<Customer>($"api/CustomersApi/{id}");
+			var customer = await client.GetFromJsonAsync<G2Customer>($"api/G2CustomersApi/{id}");
 
 			if (customer == null) return NotFound();
 
@@ -113,7 +113,7 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
 			var client = GetClient();
-			await client.DeleteAsync($"api/CustomersApi/{id}");
+			await client.DeleteAsync($"api/G2CustomersApi/{id}");
 			return RedirectToAction(nameof(Index));
 		}
 	}
