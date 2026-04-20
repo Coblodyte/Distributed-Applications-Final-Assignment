@@ -2,8 +2,8 @@
 {
 	public class G2RepairHistory
 	{
-		public int Id { get; set; }
-		public int VehicleId { get; set; }
+		public int Id { get; set; } //value object
+		public int VehicleId { get; set; } //value object
 		public DateTime RepairDate { get; set; }
 		public string Description { get; set; } = string.Empty;
 		public decimal Cost { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 using CarRentalPlatform.Models;
-using VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Domain.Enums;
 
 namespace CarRentalPlatform.Controllers
 {

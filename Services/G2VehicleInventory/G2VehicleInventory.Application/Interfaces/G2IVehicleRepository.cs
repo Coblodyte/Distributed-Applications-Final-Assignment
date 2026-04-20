@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VehicleInventory.Application.DTOs;
-using VehicleInventory.Domain.VehicleAggregate;
+﻿using G2VehicleInventory.Domain.VehicleAggregate;
 
-namespace VehicleInventory.Application.Interfaces
+namespace G2VehicleInventory.Application.Interfaces
 {
-	public interface IVehicleRepository
+	public interface G2IVehicleRepository
 	{
 		Task<G2Vehicle> GetById(int id);
 		Task<List<G2Vehicle>> GetAll();

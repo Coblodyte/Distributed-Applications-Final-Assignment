@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Domain.LocationAggregate;
-using VehicleInventory.Domain.VehicleAggregate;
+using G2VehicleInventory.Domain.LocationAggregate;
+using G2VehicleInventory.Domain.VehicleAggregate;
 
-namespace VehicleInventory.Infrastructure.Data
+namespace G2VehicleInventory.Infrastructure.Data
 {
 	public class G2InventoryDbContext : DbContext
 	{

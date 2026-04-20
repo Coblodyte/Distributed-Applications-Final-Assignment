@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VehicleInventory.Domain.Enums;
-using VehicleInventory.Domain.Exceptions;
-using VehicleInventory.Domain.ValueObjects;
+﻿using G2VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Domain.Exceptions;
+using G2VehicleInventory.Domain.ValueObjects;
 
-namespace VehicleInventory.Domain.VehicleAggregate
+namespace G2VehicleInventory.Domain.VehicleAggregate
 {
 	public class G2Vehicle
 	{
@@ -91,9 +86,5 @@ namespace VehicleInventory.Domain.VehicleAggregate
 			}
 			this.VehicleStatus = VehicleStatus.Maintenance;
 		}
-
-
-
-
 	}
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VehicleInventory.Domain.Exceptions
+namespace G2VehicleInventory.Domain.Exceptions
 {
 	public class G2InvalidVehicleStatusChangeException : Exception
 	{

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VehicleInventory.Application.DTOs;
-using VehicleInventory.Application.Services;
-using VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Application.DTOs;
+using G2VehicleInventory.Application.Services;
+using G2VehicleInventory.Domain.Enums;
 
-namespace VehicleInventory.WebAPI.Controllers
+namespace G2VehicleInventory.WebAPI.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]

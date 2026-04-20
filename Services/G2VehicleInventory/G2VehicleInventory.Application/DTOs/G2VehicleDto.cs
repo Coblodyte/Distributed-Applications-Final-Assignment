@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Domain.Enums;
 
-namespace VehicleInventory.Application.DTOs
+namespace G2VehicleInventory.Application.DTOs
 {
 	public class G2VehicleDto
 	{

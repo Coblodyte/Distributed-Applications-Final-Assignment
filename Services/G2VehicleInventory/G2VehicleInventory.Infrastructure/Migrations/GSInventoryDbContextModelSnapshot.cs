@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VehicleInventory.Infrastructure.Data;
+using G2VehicleInventory.Infrastructure.Data;
 
 #nullable disable
 
-namespace VehicleInventory.Infrastructure.Migrations
+namespace G2VehicleInventory.Infrastructure.Migrations
 {
     [DbContext(typeof(G2InventoryDbContext))]
     partial class GSInventoryDbContextModelSnapshot : ModelSnapshot
