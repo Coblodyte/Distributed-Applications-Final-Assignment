@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Application.Interfaces;
-using VehicleInventory.Domain.VehicleAggregate;
-using VehicleInventory.Infrastructure.Data;
+using G2VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Domain.VehicleAggregate;
+using G2VehicleInventory.Infrastructure.Data;
 
-namespace VehicleInventory.Infrastructure.Repositories
+namespace G2VehicleInventory.Infrastructure.Repositories
 {
-	public class G2VehicleRepository : IVehicleRepository
+	public class G2VehicleRepository : G2IVehicleRepository
 	{
 		private readonly G2InventoryDbContext _context;
 

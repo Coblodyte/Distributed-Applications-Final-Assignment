@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Application.Interfaces;
 
-namespace VehicleInventory.Application.Services
+namespace G2VehicleInventory.Application.Services
 {
 	public class G2DeleteVehicle
 	{
-		private readonly IVehicleRepository _vehicleRepository;
+		private readonly G2IVehicleRepository _vehicleRepository;
 
-		public G2DeleteVehicle(IVehicleRepository vehicleRepository)
+		public G2DeleteVehicle(G2IVehicleRepository vehicleRepository)
 		{
 			_vehicleRepository = vehicleRepository;
 		}

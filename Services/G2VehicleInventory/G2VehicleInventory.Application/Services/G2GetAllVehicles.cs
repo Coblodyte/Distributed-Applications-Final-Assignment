@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Application.DTOs;
-using VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Application.DTOs;
+using G2VehicleInventory.Application.Interfaces;
 
-namespace VehicleInventory.Application.Services
+namespace G2VehicleInventory.Application.Services
 {
 	public class G2GetAllVehicles
 	{
-		private readonly IVehicleRepository _vehicleRepository;
+		private readonly G2IVehicleRepository _vehicleRepository;
 
-		public G2GetAllVehicles(IVehicleRepository vehicleRepository)
+		public G2GetAllVehicles(G2IVehicleRepository vehicleRepository)
 		{
 			_vehicleRepository = vehicleRepository;
 		}

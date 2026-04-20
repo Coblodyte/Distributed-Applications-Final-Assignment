@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Application.DTOs;
-using VehicleInventory.Application.Interfaces;
-using VehicleInventory.Domain.Enums;
-using VehicleInventory.Domain.ValueObjects;
-using VehicleInventory.Domain.VehicleAggregate;
+using G2VehicleInventory.Application.DTOs;
+using G2VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Domain.ValueObjects;
+using G2VehicleInventory.Domain.VehicleAggregate;
 
-namespace VehicleInventory.Application.Services
+namespace G2VehicleInventory.Application.Services
 {
 	public class G2CreateVehicle
 	{
-		private readonly IVehicleRepository _vehicleRepository;
+		private readonly G2IVehicleRepository _vehicleRepository;
 
-		public G2CreateVehicle(IVehicleRepository vehicleRepository)
+		public G2CreateVehicle(G2IVehicleRepository vehicleRepository)
 		{
 			_vehicleRepository = vehicleRepository;
 		}

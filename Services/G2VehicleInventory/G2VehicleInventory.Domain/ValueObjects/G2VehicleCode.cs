@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VehicleInventory.Domain.ValueObjects
+namespace G2VehicleInventory.Domain.ValueObjects
 {
 	public class G2VehicleCode
 	{

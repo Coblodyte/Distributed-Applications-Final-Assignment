@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Application.DTOs;
-using VehicleInventory.Application.Exceptions;
-using VehicleInventory.Application.Interfaces;
-using VehicleInventory.Domain.Enums;
+using G2VehicleInventory.Application.DTOs;
+using G2VehicleInventory.Application.Exceptions;
+using G2VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Domain.Enums;
 
-namespace VehicleInventory.Application.Services
+namespace G2VehicleInventory.Application.Services
 {
 	public class G2UpdateVehicleStatus
 	{
-		private readonly IVehicleRepository _vehicleRepository;
+		private readonly G2IVehicleRepository _vehicleRepository;
 
-		public G2UpdateVehicleStatus(IVehicleRepository vehicleRepository)
+		public G2UpdateVehicleStatus(G2IVehicleRepository vehicleRepository)
 		{
 			_vehicleRepository = vehicleRepository;
 		}
@@ -42,7 +42,7 @@ namespace VehicleInventory.Application.Services
 					currentVehicle.MarkServiced();
 					break;
 				default:
-					throw new InvalidVehicleStatusException($"Invalid vehicle status: {newStatus}");
+					throw new G2InvalidVehicleStatusException($"Invalid vehicle status: {newStatus}");
 			}
 
 			await _vehicleRepository.SaveChanges();

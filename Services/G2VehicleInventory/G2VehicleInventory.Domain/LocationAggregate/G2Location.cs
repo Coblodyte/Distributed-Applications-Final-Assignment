@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleInventory.Domain.ValueObjects;
+using G2VehicleInventory.Domain.ValueObjects;
 
-namespace VehicleInventory.Domain.LocationAggregate
+namespace G2VehicleInventory.Domain.LocationAggregate
 {
 	public class G2Location
 	{

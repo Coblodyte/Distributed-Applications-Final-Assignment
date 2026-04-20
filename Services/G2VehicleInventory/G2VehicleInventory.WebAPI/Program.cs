@@ -1,9 +1,9 @@
 using G2_Shared_Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using VehicleInventory.Application.Interfaces;
-using VehicleInventory.Application.Services;
-using VehicleInventory.Infrastructure.Data;
-using VehicleInventory.Infrastructure.Repositories;
+using G2VehicleInventory.Application.Interfaces;
+using G2VehicleInventory.Application.Services;
+using G2VehicleInventory.Infrastructure.Data;
+using G2VehicleInventory.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<G2InventoryDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IVehicleRepository, G2VehicleRepository>();
+builder.Services.AddScoped<G2IVehicleRepository, G2VehicleRepository>();
 builder.Services.AddScoped<G2CreateVehicle>();
 builder.Services.AddScoped<G2GetAllVehicles>();
 builder.Services.AddScoped<G2GetVehicleById>();
