@@ -15,7 +15,7 @@ public partial class CustomerProfileContext : DbContext
 	{
 	}
 
-	public virtual DbSet<Customer> Customers { get; set; }
+	public virtual DbSet<G2Customer> Customers { get; set; }
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
@@ -27,7 +27,7 @@ public partial class CustomerProfileContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		modelBuilder.Entity<Customer>(entity =>
+		modelBuilder.Entity<G2Customer>(entity =>
 		{
 			entity.HasKey(e => e.Id).HasName("PK__Customer__3214EC070DC399EC");
 		});

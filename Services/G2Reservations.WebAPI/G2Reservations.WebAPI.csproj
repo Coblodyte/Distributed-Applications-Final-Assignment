@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Shared\G2_Shared_Infrastructure\G2_Shared_Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

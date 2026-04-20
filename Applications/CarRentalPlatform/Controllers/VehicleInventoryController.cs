@@ -19,14 +19,14 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> Index()
 		{
 			var client = GetClient();
-			var vehicles = await client.GetFromJsonAsync<List<VehicleViewModel>>("api/GSVehicles");
+			var vehicles = await client.GetFromJsonAsync<List<VehicleViewModel>>("api/G2Vehicles");
 			return View(vehicles ?? new List<VehicleViewModel>());
 		}
 
 		public async Task<IActionResult> Details(int id)
 		{
 			var client = GetClient();
-			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/GSVehicles/{id}");
+			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/G2Vehicles/{id}");
 
 			if (vehicle == null) return NotFound();
 
@@ -48,7 +48,7 @@ namespace CarRentalPlatform.Controllers
 			}
 
 			var client = GetClient();
-			var response = await client.PostAsJsonAsync("api/GSVehicles", model);
+			var response = await client.PostAsJsonAsync("api/G2Vehicles", model);
 
 			if (response.IsSuccessStatusCode)
 			{
@@ -69,7 +69,7 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> Edit(int id)
 		{
 			var client = GetClient();
-			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/GSVehicles/{id}");
+			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/G2Vehicles/{id}");
 			if (vehicle == null) return NotFound();
 			return View(vehicle);
 		}
@@ -80,7 +80,7 @@ namespace CarRentalPlatform.Controllers
 		{
 			var client = GetClient();
 
-			var existingVehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/GSVehicles/{id}");
+			var existingVehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/G2Vehicles/{id}");
 			if (existingVehicle == null)
 			{
 				return NotFound();
@@ -98,7 +98,7 @@ namespace CarRentalPlatform.Controllers
 				return View(existingVehicle);
 			}
 
-			var response = await client.PutAsJsonAsync($"api/GSVehicles/{id}/status", parsedStatus);
+			var response = await client.PutAsJsonAsync($"api/G2Vehicles/{id}/status", parsedStatus);
 
 			if (response.IsSuccessStatusCode)
 			{
@@ -120,7 +120,7 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> Delete(int id)
 		{
 			var client = GetClient();
-			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/GSVehicles/{id}");
+			var vehicle = await client.GetFromJsonAsync<VehicleViewModel>($"api/G2Vehicles/{id}");
 			if (vehicle == null) return NotFound();
 			return View(vehicle);
 		}
@@ -130,7 +130,7 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
 			var client = GetClient();
-			await client.DeleteAsync($"api/GSVehicles/{id}");
+			await client.DeleteAsync($"api/G2Vehicles/{id}");
 			return RedirectToAction(nameof(Index));
 		}
 	}

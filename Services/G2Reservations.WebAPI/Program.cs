@@ -1,5 +1,5 @@
 using G2Reservations.WebAPI.Models;
-using GS_Shared_Infrastructure;
+using G2_Shared_Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +25,8 @@ builder.Services.AddHttpClient("VehicleInventoryApi", client =>
 
 var app = builder.Build();
 
-app.UseMiddleware<GSGlobalExceptionMiddleware>();
-app.UseMiddleware<GSGatewayMiddleware>();
+app.UseMiddleware<G2GlobalExceptionMiddleware>();
+app.UseMiddleware<G2GatewayMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

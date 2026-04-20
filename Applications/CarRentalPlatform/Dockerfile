@@ -3,13 +3,13 @@ WORKDIR /src
 
 COPY ["CarRental.sln", "."]
 COPY ["Applications/CarRentalPlatform/CarRentalPlatform.csproj", "Applications/CarRentalPlatform/"]
-COPY ["Shared/GS_Shared_Infrastructure/GS_Shared_Infrastructure.csproj", "Shared/GS_Shared_Infrastructure/"]
-COPY ["Services/CarRentalCustomers/CarRentalCustomers.csproj", "Services/CarRentalCustomers/"]
-COPY ["Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj", "Services/Maintenance.WebAPI/"]
-COPY ["Services/VehicleInventory/VehicleInventory.WebAPI/VehicleInventory.WebAPI.csproj", "Services/VehicleInventory/VehicleInventory.WebAPI/"]
-COPY ["Services/VehicleInventory/VehicleInventory.Application/VehicleInventory.Application.csproj", "Services/VehicleInventory/VehicleInventory.Application/"]
-COPY ["Services/VehicleInventory/VehicleInventory.Domain/VehicleInventory.Domain.csproj", "Services/VehicleInventory/VehicleInventory.Domain/"]
-COPY ["Services/VehicleInventory/VehicleInventory.Infrastructure/VehicleInventory.Infrastructure.csproj", "Services/VehicleInventory/VehicleInventory.Infrastructure/"]
+COPY ["Shared/G2_Shared_Infrastructure/G2_Shared_Infrastructure.csproj", "Shared/G2_Shared_Infrastructure/"]
+COPY ["Services/G2CarRentalCustomers/G2CarRentalCustomers.csproj", "Services/G2CarRentalCustomers/"]
+COPY ["Services/G2Maintenance.WebAPI/G2Maintenance.WebAPI.csproj", "Services/G2Maintenance.WebAPI/"]
+COPY ["Services/G2VehicleInventory/G2VehicleInventory.WebAPI/G2VehicleInventory.WebAPI.csproj", "Services/G2VehicleInventory/G2VehicleInventory.WebAPI/"]
+COPY ["Services/G2VehicleInventory/G2VehicleInventory.Application/G2VehicleInventory.Application.csproj", "Services/G2VehicleInventory/G2VehicleInventory.Application/"]
+COPY ["Services/G2VehicleInventory/G2VehicleInventory.Domain/G2VehicleInventory.Domain.csproj", "Services/G2VehicleInventory/G2VehicleInventory.Domain/"]
+COPY ["Services/G2VehicleInventory/G2VehicleInventory.Infrastructure/G2VehicleInventory.Infrastructure.csproj", "Services/G2VehicleInventory/G2VehicleInventory.Infrastructure/"]
 
 RUN dotnet restore "Applications/CarRentalPlatform/CarRentalPlatform.csproj"
 
