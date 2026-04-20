@@ -88,7 +88,7 @@ namespace G2Reservations.WebAPI.Controllers
 			var customerClient = _httpClientFactory.CreateClient("CustomersApi");
 			var vehicleClient = _httpClientFactory.CreateClient("VehicleInventoryApi");
 
-			var customerResponse = await customerClient.GetAsync($"api/CustomersApi/{customerId}");
+			var customerResponse = await customerClient.GetAsync($"api/G2CustomersApi/{customerId}");
 			if (!customerResponse.IsSuccessStatusCode)
 			{
 				return NotFound(new
@@ -117,7 +117,7 @@ namespace G2Reservations.WebAPI.Controllers
 
 			foreach (var reservation in reservations)
 			{
-				var vehicleResponse = await vehicleClient.GetAsync($"api/GSVehicles/{reservation.VehicleId}");
+				var vehicleResponse = await vehicleClient.GetAsync($"api/G2Vehicles/{reservation.VehicleId}");
 				G2VehicleLookupDto? vehicle = null;
 
 				if (vehicleResponse.IsSuccessStatusCode)
@@ -176,7 +176,7 @@ namespace G2Reservations.WebAPI.Controllers
 			var customerClient = _httpClientFactory.CreateClient("CustomersApi");
 			var vehicleClient = _httpClientFactory.CreateClient("VehicleInventoryApi");
 
-			var customerResponse = await customerClient.GetAsync($"api/CustomersApi/{dto.CustomerId}");
+			var customerResponse = await customerClient.GetAsync($"api/G2CustomersApi/{dto.CustomerId}");
 			if (!customerResponse.IsSuccessStatusCode)
 			{
 				return NotFound(new
@@ -186,7 +186,7 @@ namespace G2Reservations.WebAPI.Controllers
 				});
 			}
 
-			var vehicleResponse = await vehicleClient.GetAsync($"api/GSVehicles/{dto.VehicleId}");
+			var vehicleResponse = await vehicleClient.GetAsync($"api/G2Vehicles/{dto.VehicleId}");
 			if (!vehicleResponse.IsSuccessStatusCode)
 			{
 				return NotFound(new
@@ -251,7 +251,7 @@ namespace G2Reservations.WebAPI.Controllers
 			await _context.SaveChangesAsync();
 
 			var updateStatusResponse = await vehicleClient.PutAsJsonAsync(
-				$"api/GSVehicles/{dto.VehicleId}/status",
+				$"api/G2Vehicles/{dto.VehicleId}/status",
 				"Reserved");
 
 			if (!updateStatusResponse.IsSuccessStatusCode)
