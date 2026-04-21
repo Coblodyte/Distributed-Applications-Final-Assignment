@@ -17,52 +17,6 @@
     <None Include=".dockerignore" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_G2VehicleInventory.Domain.Tests" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\G2VehicleInventory.Domain.Tests.csproj" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.AssemblyInfoInputs.cache" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.assets.cache" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.csproj.AssemblyReference.cache" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.GeneratedMSBuildEditorConfig.editorconfig" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\G2VehicleInventory.Domain.Tests.csproj.nuget.dgspec.json" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\G2VehicleInventory.Domain.Tests.csproj.nuget.g.props" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\G2VehicleInventory.Domain.Tests.csproj.nuget.g.targets" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\project.assets.json" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\project.nuget.cache" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\project.packagespec.json" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\rider.project.model.nuget.info" />
-    <Content Include="Tests\G2VehicleInventory.Domain.Tests\obj\rider.project.restore.info" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\bin\Debug\net8.0\CoverletSourceRootsMapping_G2VehicleInventory.WebAPI.IntegrationTests" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\G2VehicleInventory.WebAPI.IntegrationTests.csproj" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.AssemblyInfoInputs.cache" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.assets.cache" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.csproj.AssemblyReference.cache" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.GeneratedMSBuildEditorConfig.editorconfig" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\G2VehicleInventory.WebAPI.IntegrationTests.csproj.nuget.dgspec.json" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\G2VehicleInventory.WebAPI.IntegrationTests.csproj.nuget.g.props" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\G2VehicleInventory.WebAPI.IntegrationTests.csproj.nuget.g.targets" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\project.assets.json" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\project.nuget.cache" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\project.packagespec.json" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\rider.project.model.nuget.info" />
-    <Content Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\rider.project.restore.info" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\Domain\G2VehicleTests.cs" />
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.AssemblyInfo.cs" />
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\G2VehicleInventory.Domain.Tests.GlobalUsings.g.cs" />
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\Services\G2CreateVehicleTests.cs" />
-    <Compile Include="Tests\G2VehicleInventory.Domain.Tests\Services\G2UpdateVehicleStatusTests.cs" />
-    <Compile Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\BaseClasses\IntegrationTestBase.cs" />
-    <Compile Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\Controllers\G2VehiclesControllerIntegrationTests.cs" />
-    <Compile Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
-    <Compile Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.AssemblyInfo.cs" />
-    <Compile Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\G2VehicleInventory.WebAPI.IntegrationTests.GlobalUsings.g.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\refint\" />
-    <Folder Include="Tests\G2VehicleInventory.Domain.Tests\obj\Debug\net8.0\ref\" />
-    <Folder Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\refint\" />
-    <Folder Include="Tests\G2VehicleInventory.WebAPI.IntegrationTests\obj\Debug\net8.0\ref\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
 </Project>
