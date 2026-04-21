@@ -65,9 +65,5 @@ namespace G2VehicleInventory.WebAPI.Controllers
 			await _DeleteVehicleService.DeleteVehicle(id);
 			return NoContent();
 		}
-
-
-
-
 	}
 }

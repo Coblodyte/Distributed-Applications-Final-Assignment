@@ -26,10 +26,13 @@ services:
   maintenance-api:
     build:
       context: .
-      dockerfile: Services/G2Maintenance.WebAPI/Dockerfile
+      dockerfile: Services/G2Maintenance/G2Maintenance.WebAPI/Dockerfile
     container_name: maintenance-api
+    depends_on:
+      - sqlserver
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=MaintenanceDb;User Id=sa;Password=Password111!;TrustServerCertificate=True;Encrypt=False"
     ports:
       - "7123:8080"
 

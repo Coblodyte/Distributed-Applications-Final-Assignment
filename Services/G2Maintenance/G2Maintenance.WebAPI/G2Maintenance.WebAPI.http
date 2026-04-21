@@ -1,6 +1,0 @@
-@G2Maintenance.WebAPI_HostAddress = http://localhost:5210
-
-GET {{G2Maintenance.WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
