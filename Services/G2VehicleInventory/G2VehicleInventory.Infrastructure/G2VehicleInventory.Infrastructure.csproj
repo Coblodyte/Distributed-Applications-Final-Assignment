@@ -16,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\G2Maintenance\G2Maintenance.Application\G2Maintenance.Application.csproj" />
 		<ProjectReference Include="..\G2VehicleInventory.Application\G2VehicleInventory.Application.csproj" />
 		<ProjectReference Include="..\G2VehicleInventory.Domain\G2VehicleInventory.Domain.csproj" />
 	</ItemGroup>

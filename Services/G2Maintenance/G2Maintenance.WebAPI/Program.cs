@@ -1,11 +1,29 @@
+using G2_Shared_Infrastructure;
+using G2Maintenance.Application.Interfaces;
+using G2Maintenance.Application.Services;
+using G2Maintenance.Infrastructure.Data;
+using G2Maintenance.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var usageCounts = new Dictionary<string, int>();
+builder.Services.AddSingleton(usageCounts);
+
+builder.Services.AddDbContext<G2MaintenanceDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<G2IMaintenanceRepository, G2MaintenanceRepository>();
+builder.Services.AddScoped<G2AddRepairHistory>();
+builder.Services.AddScoped<G2GetRepairHistoryById>();
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<G2GlobalExceptionMiddleware>();
+app.UseMiddleware<G2GatewayMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -14,31 +32,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseAuthorization();
 
-var summaries = new[]
+app.MapControllers();
+
+
+using (var scope = app.Services.CreateScope())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+    var db = scope.ServiceProvider.GetRequiredService<G2MaintenanceDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
