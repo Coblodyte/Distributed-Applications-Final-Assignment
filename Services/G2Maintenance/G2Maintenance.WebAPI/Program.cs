@@ -16,8 +16,8 @@ builder.Services.AddSingleton(usageCounts);
 
 var serviceName = "G2Maintenance";
 var serviceVersion = "1.0.0";
-
-builder.Logging.ClearProviders();
+builder.Services.AddHealthChecks();
+/*builder.Logging.ClearProviders();
 builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 builder.Logging.AddConsole();
 builder.Logging.AddOpenTelemetry(options =>
@@ -51,7 +51,7 @@ builder.Services.AddOpenTelemetry()
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddConsoleExporter();
-    });
+    });*/
 
 builder.Services.AddDbContext<G2MaintenanceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -79,11 +79,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<G2MaintenanceDbContext>();
-    db.Database.Migrate();
+
+    if (db.Database.IsRelational())
+    {
+        db.Database.Migrate();
+    }
+    else
+    {
+        db.Database.EnsureCreated();
+    }
 }
 
+
+app.MapHealthChecks("/health").AllowAnonymous();
 app.Run();

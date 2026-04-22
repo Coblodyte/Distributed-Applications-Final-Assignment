@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var serviceName = "G2Customers";
 var serviceVersion = "1.0.0";
-
+builder.Services.AddHealthChecks();
 builder.Logging.ClearProviders();
 builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 builder.Logging.AddConsole();
@@ -74,12 +74,21 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
 	var db = scope.ServiceProvider.GetRequiredService<G2CustomerProfileContext>();
-	db.Database.EnsureCreated();
+
+	if (db.Database.IsRelational())
+	{
+		db.Database.Migrate();
+	}
+	else
+	{
+		db.Database.EnsureCreated();
+	}
 }
 
 app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapHealthChecks("/health").AllowAnonymous();
 
 app.Run();
