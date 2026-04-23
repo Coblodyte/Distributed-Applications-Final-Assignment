@@ -3,7 +3,6 @@ WORKDIR /src
 
 COPY ["CarRental.sln", "."]
 COPY ["G2API_Gateway/G2API_Gateway.csproj", "G2API_Gateway/"]
-COPY ["Shared/G2_Shared_Infrastructure/G2_Shared_Infrastructure.csproj", "Shared/G2_Shared_Infrastructure/"]
 
 RUN dotnet restore "G2API_Gateway/G2API_Gateway.csproj"
 

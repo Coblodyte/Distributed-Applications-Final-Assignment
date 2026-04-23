@@ -24,4 +24,5 @@ RUN dotnet publish "./G2Maintenance.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /a
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ASPNETCORE_URLS=http://+:8080
 ENTRYPOINT ["dotnet", "G2Maintenance.WebAPI.dll"]

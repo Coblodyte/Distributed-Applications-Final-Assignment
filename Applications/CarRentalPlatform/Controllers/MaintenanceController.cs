@@ -11,6 +11,8 @@ namespace CarRentalPlatform.Controllers
 		{
 			_httpClientFactory = httpClientFactory;
 		}
+		
+		private HttpClient GetClient() => _httpClientFactory.CreateClient("ApiGateway");
 
 		[HttpGet]
 		public IActionResult History()
@@ -22,7 +24,7 @@ namespace CarRentalPlatform.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> History(int vehicleId)
 		{
-			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var client = GetClient();
 			var repairs = await client.GetFromJsonAsync<List<RepairHistoryViewModel>>(
 				$"api/maintenance/vehicles/{vehicleId}/repairs");
 
@@ -48,7 +50,7 @@ namespace CarRentalPlatform.Controllers
 				return View(model);
 			}
 
-			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var client = GetClient();
 			var response = await client.PostAsJsonAsync("api/maintenance/", model);
 
 			if (response.IsSuccessStatusCode)
@@ -62,7 +64,7 @@ namespace CarRentalPlatform.Controllers
 
 		public async Task<IActionResult> Usage()
 		{
-			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var client = GetClient();
 			var result = await client.GetFromJsonAsync<object>("api/maintenance/usage");
 			return View(result);
 		}

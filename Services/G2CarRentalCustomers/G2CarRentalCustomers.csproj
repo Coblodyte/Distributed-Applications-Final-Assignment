@@ -34,4 +34,13 @@
     <ProjectReference Include="..\..\Shared\G2_Shared_Infrastructure\G2_Shared_Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Customers\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Customers\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Customers\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Customers\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Customers\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
 </Project>

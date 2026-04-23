@@ -35,19 +35,18 @@ namespace G2_Shared_Infrastructure
 		private static Task HandleExceptionAsync(HttpContext context, Exception exception)
 		{
 			context.Response.ContentType = "application/json";
-
-			// Default to 500
+			
 			var statusCode = HttpStatusCode.InternalServerError;
 			var result = "An unexpected error occurred.";
 
 			if (exception is ArgumentException || exception.Message.Contains("Invalid"))
 			{
-				statusCode = HttpStatusCode.BadRequest; // 400
+				statusCode = HttpStatusCode.BadRequest;
 				result = exception.Message;
 			}
 			else if (exception.Message.Contains("not found"))
 			{
-				statusCode = HttpStatusCode.NotFound; // 404
+				statusCode = HttpStatusCode.NotFound;
 				result = exception.Message;
 			}
 

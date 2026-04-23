@@ -30,6 +30,7 @@ public partial class G2CustomerProfileContext : DbContext
 	{
 		modelBuilder.Entity<G2Customer>(entity =>
 		{
+			entity.ToTable("Customers");
 			entity.HasKey(e => e.Id).HasName("PK__Customer__3214EC070DC399EC");
 		});
 

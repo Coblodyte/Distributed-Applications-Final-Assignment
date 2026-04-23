@@ -1,4 +1,3 @@
-using G2_Shared_Infrastructure;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -71,17 +70,16 @@ app.Use(async (context, next) =>
 		return;
 	}
 	const string API_KEY_HEADER = "X-GS-Api-Key";
-	const string EXPECTED_API_KEY = "GS-Secret-Key-2111"; // MVC sends this
+	const string EXPECTED_API_KEY = "GS-Secret-Key-2111";
 
 	if (!context.Request.Headers.TryGetValue(API_KEY_HEADER, out var extractedKey) ||
 		extractedKey != EXPECTED_API_KEY)
 	{
-		context.Response.StatusCode = 401; // Unauthorized
+		context.Response.StatusCode = 401;
 		await context.Response.WriteAsync("Invalid or missing API Key.");
 		return;
 	}
-
-	// Trusted header to block direct access
+	
 	context.Request.Headers.Append("X-From-Gateway", "GS-Gateway-Trusted-Token-111");
 
 	await next();

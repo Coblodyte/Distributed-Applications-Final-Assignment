@@ -38,18 +38,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6bc10fd-76d7-4b3b-8f4d-016189b5d64f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarRental/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarRental/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarRental/Docker/docker-compose.generated.override.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarRental.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CarRental.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/G2VehicleInventory.Domain.Tests/G2VehicleInventory.Domain.Tests.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/G2VehicleInventory.WebAPI.IntegrationTests/G2VehicleInventory.WebAPI.IntegrationTests.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.dcproj" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dcproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai/mcp/mcp.json" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/sql-pvc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarRental/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarRental/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/CarRentalPlatform/Controllers/MaintenanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/CarRentalPlatform/Controllers/MaintenanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/CarRentalPlatform/Models/CustomerProfileContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/CarRentalPlatform/Models/G2Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/CarRentalPlatform/Models/G2Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/CarRentalPlatform/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/CarRentalPlatform/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/CarRentalPlatform/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/CarRentalPlatform/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/G2API_Gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/G2API_Gateway/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/G2API_Gateway/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/G2API_Gateway/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/G2CarRentalCustomers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2CarRentalCustomers/G2CarRentalCustomers.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Models/G2Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Models/G2Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Models/G2CustomerProfileContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Models/G2CustomerProfileContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Customers/Create.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Customers/Delete.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Customers/Details.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Customers/Edit.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Customers/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2CarRentalCustomers/Views/Shared/_ValidationScriptsPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Controllers/G2MaintenanceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Controllers/G2MaintenanceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2Maintenance/G2Maintenance.WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2Reservations.WebAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2Reservations.WebAPI/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2Reservations.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2Reservations.WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/G2VehicleInventory/G2VehicleInventory.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/G2VehicleInventory/G2VehicleInventory.WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/G2_Shared_Infrastructure/G2GatewayMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/G2_Shared_Infrastructure/G2GatewayMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/G2_Shared_Infrastructure/G2GlobalExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/G2_Shared_Infrastructure/G2GlobalExceptionMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/carrental-mvc-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/carrental-mvc-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/customers-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/customers-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/gateway-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/gateway-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/maintenance-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/maintenance-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/reservations-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/reservations-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/sqlserver-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/sqlserver-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/vehicleinventory-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/vehicleinventory-deployment.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,9 +93,16 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Gary91002/Distributed-Applications-Final-Assignment.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/Coblodyte/Distributed-Applications-Final-Assignment.git&quot;,
     &quot;accountId&quot;: &quot;d8768530-cf3e-4243-963e-d61aced17a62&quot;
   }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Applications/CarRentalPlatform/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -82,6 +120,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.G2API_Gateway: https.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -92,7 +131,7 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/MergeTesting&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -102,7 +141,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Docker.CarRentalPlatform/Dockerfile">
+  <component name="RunManager" selected=".NET Launch Settings Profile.G2API_Gateway: https">
     <configuration name="CarRentalPlatform: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Applications/CarRentalPlatform/CarRentalPlatform.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -570,6 +609,9 @@
       <workItem from="1776801111647" duration="610000" />
       <workItem from="1776801779792" duration="233000" />
       <workItem from="1776802035684" duration="676000" />
+      <workItem from="1776824880541" duration="5097000" />
+      <workItem from="1776902696776" duration="11335000" />
+      <workItem from="1776954569220" duration="14133000" />
     </task>
     <servers />
   </component>

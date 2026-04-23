@@ -12,12 +12,10 @@ public class G2MaintenanceController : ControllerBase
 {
     private readonly G2AddRepairHistory _addService;
     private readonly G2GetRepairHistoryById _getByIdService;
-    private readonly Dictionary<string, int> _usageCounts;
-    public G2MaintenanceController(G2AddRepairHistory addService, G2GetRepairHistoryById getByIdService, Dictionary<string, int> ussageCounts)
+    public G2MaintenanceController(G2AddRepairHistory addService, G2GetRepairHistoryById getByIdService)
     {
         _addService = addService;
         _getByIdService = getByIdService;
-        _usageCounts = ussageCounts;
     }
     [HttpGet("vehicles/{vehicleId}/repairs")]
     public async Task<ActionResult> GetRepairHistory(int vehicleId)

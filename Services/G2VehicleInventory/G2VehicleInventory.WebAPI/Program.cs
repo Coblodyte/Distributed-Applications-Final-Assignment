@@ -4,6 +4,8 @@ using G2VehicleInventory.Application.Interfaces;
 using G2VehicleInventory.Application.Services;
 using G2VehicleInventory.Infrastructure.Data;
 using G2VehicleInventory.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -85,15 +87,25 @@ app.MapControllers();
 // Apply migrations automatically in Docker / local SQL
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<G2InventoryDbContext>();
-
-    if (db.Database.IsRelational())
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<G2InventoryDbContext>();
+    
+    try
     {
-        db.Database.Migrate();
+        var databaseCreator = context.Database.GetService<IRelationalDatabaseCreator>();
+        
+        // If the database doesn't exist, create it
+        if (!databaseCreator.Exists()) databaseCreator.Create();
+        
+        // If the tables don't exist, create them
+        if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
+        
+        // Log success so you can see it in 'kubectl logs'
+        Console.WriteLine("Database and Schema verified/created successfully.");
     }
-    else
+    catch (Exception ex)
     {
-        db.Database.EnsureCreated();
+        Console.WriteLine($"DB Initialization failed: {ex.Message}");
     }
 }
 app.MapHealthChecks("/health").AllowAnonymous();

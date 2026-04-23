@@ -1,6 +1,8 @@
 using CarRentalPlatform.Models;
 using G2_Shared_Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -50,7 +52,6 @@ builder.Services.AddOpenTelemetry()
 	});
 
 builder.Services.AddControllers();
-builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -73,15 +74,25 @@ if (app.Environment.IsDevelopment())
 // Auto create DB/table for Docker SQL Server
 using (var scope = app.Services.CreateScope())
 {
-	var db = scope.ServiceProvider.GetRequiredService<G2CustomerProfileContext>();
-
-	if (db.Database.IsRelational())
+	var services = scope.ServiceProvider;
+	var context = services.GetRequiredService<G2CustomerProfileContext>();
+    
+	try
 	{
-		db.Database.Migrate();
+		var databaseCreator = context.Database.GetService<IRelationalDatabaseCreator>();
+        
+		// If the database doesn't exist, create it
+		if (!databaseCreator.Exists()) databaseCreator.Create();
+        
+		// If the tables don't exist, create them
+		if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
+        
+		// Log success so you can see it in 'kubectl logs'
+		Console.WriteLine("Database and Schema verified/created successfully.");
 	}
-	else
+	catch (Exception ex)
 	{
-		db.Database.EnsureCreated();
+		Console.WriteLine($"DB Initialization failed: {ex.Message}");
 	}
 }
 

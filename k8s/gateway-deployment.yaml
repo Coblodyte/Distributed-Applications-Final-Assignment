@@ -19,8 +19,8 @@ spec:
             - 'sh'
             - '-c'
             - |
-              until nc -z customers-api 8080 && nc -z maintenance-api 8080 && nc -z vehicleinventory-api 8080; do 
-                echo "Waiting for downstream APIs to spin up..."; 
+              until nc -z reservations-api 8080 && nc -z customers-api 8080 && nc -z maintenance-api 8080 && nc -z vehicleinventory-api 8080; do 
+                echo "Waiting for downstream APIs to start..."; 
                 sleep 2; 
               done;
       containers:
@@ -38,7 +38,7 @@ spec:
             - containerPort: 8080
           env:
             - name: ASPNETCORE_ENVIRONMENT
-              value: Development
+              value: Production
             - name: ASPNETCORE_URLS
               value: http://+:8080
             - name: ReverseProxy__Clusters__maintenance-cluster__Destinations__destination1__Address
