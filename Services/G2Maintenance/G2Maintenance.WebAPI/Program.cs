@@ -30,7 +30,7 @@ builder.Logging.AddOpenTelemetry(options =>
     options.IncludeScopes = true;
     options.ParseStateValues = true;
     options.AddConsoleExporter();
-});
+}); 
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(resource => resource.AddService(serviceName: serviceName, serviceVersion: serviceVersion))
